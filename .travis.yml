@@ -13,6 +13,7 @@ env:
   - MODE=framework
 script: 
   - set -o pipefail
+  - xcodebuild test -project AsyncDisplayKit.xcodeproj -sdk iphonesimulator -scheme AsyncDisplayKit-iOS -configuration Debug -destination "platform=iOS Simulator,name=iPhone 4s" -destination "platform=iOS Simulator,name=iPhone 6 Plus" GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES | xcpretty -c
   - ./build.sh $MODE
   
 after_success:
