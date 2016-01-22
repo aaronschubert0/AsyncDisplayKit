@@ -20,12 +20,7 @@ MODE="$1"
 if [ "$MODE" = "tests" ]; then
     echo "Building & testing AsyncDisplayKit."
     pod install
-    xctool \
-        -workspace AsyncDisplayKit.xcworkspace \
-        -scheme AsyncDisplayKit \
-        -sdk "$SDK" \
-        -destination "$PLATFORM" \
-        build test
+    xcodebuild test -project AsyncDisplayKit.xcodeproj -sdk iphonesimulator -scheme AsyncDisplayKit -configuration Debug -destination "platform=iOS Simulator,name=iPhone 4s" -destination "platform=iOS Simulator,name=iPhone 6 Plus" GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
     trap - EXIT
     exit 0
 fi
