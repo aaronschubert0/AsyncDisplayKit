@@ -4,6 +4,7 @@ before_install:
   - brew update
   - brew reinstall xctool
   - gem install cocoapods -v 0.38.2
+  - gem install slather
   - xcrun simctl list
 install: echo "<3"
 env:
@@ -11,12 +12,9 @@ env:
   - MODE=examples
   - MODE=life-without-cocoapods
   - MODE=framework
-script: 
-  - set -o pipefail
-  - ./build.sh $MODE
-  
+script: ./build.sh $MODE
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - slather
 
 # whitelist
 branches:
