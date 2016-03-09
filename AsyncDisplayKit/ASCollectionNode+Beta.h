@@ -6,6 +6,7 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
+#import "ASCollectionNode.h"
 @protocol ASCollectionViewLayoutFacilitatorProtocol;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -13,6 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ASCollectionNode (Beta)
 
 - (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout layoutFacilitator:(nullable id<ASCollectionViewLayoutFacilitatorProtocol>)layoutFacilitator;
+
+- (void)beginUpdates;
+
+- (void)endUpdatesAnimated:(BOOL)animated;
+
+- (void)endUpdatesAnimated:(BOOL)animated completion:(void (^)(BOOL))completion;
 
 @end
 

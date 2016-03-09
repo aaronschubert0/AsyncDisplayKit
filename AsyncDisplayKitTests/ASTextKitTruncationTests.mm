@@ -42,7 +42,9 @@
                                                             maximumNumberOfLines:0
                                                                   exclusionPaths:nil
                                                                  constrainedSize:constrainedSize
-                                                            layoutManagerFactory:nil];
+                                                      layoutManagerCreationBlock:nil
+                                                           layoutManagerDelegate:nil
+                                                        textStorageCreationBlock:nil];
   __block NSRange textKitVisibleRange;
   [context performBlockWithLockedTextKitComponents:^(NSLayoutManager *layoutManager, NSTextStorage *textStorage, NSTextContainer *textContainer) {
     textKitVisibleRange = [layoutManager characterRangeForGlyphRange:[layoutManager glyphRangeForTextContainer:textContainer]
@@ -50,8 +52,7 @@
   }];
   ASTextKitTailTruncater *tailTruncater = [[ASTextKitTailTruncater alloc] initWithContext:context
                                                                truncationAttributedString:nil
-                                                                   avoidTailTruncationSet:nil
-                                                                          constrainedSize:constrainedSize];
+                                                                   avoidTailTruncationSet:nil];
   XCTAssert(NSEqualRanges(textKitVisibleRange, tailTruncater.visibleRanges[0]));
 }
 
@@ -64,11 +65,12 @@
                                                             maximumNumberOfLines:0
                                                                   exclusionPaths:nil
                                                                  constrainedSize:constrainedSize
-                                                            layoutManagerFactory:nil];
+                                                      layoutManagerCreationBlock:nil
+                                                           layoutManagerDelegate:nil
+                                                        textStorageCreationBlock:nil];
   ASTextKitTailTruncater *tailTruncater = [[ASTextKitTailTruncater alloc] initWithContext:context
                                                                truncationAttributedString:[self _simpleTruncationAttributedString]
-                                                                   avoidTailTruncationSet:[NSCharacterSet characterSetWithCharactersInString:@""]
-                                                                          constrainedSize:constrainedSize];
+                                                                   avoidTailTruncationSet:[NSCharacterSet characterSetWithCharactersInString:@""]];
   __block NSString *drawnString;
   [context performBlockWithLockedTextKitComponents:^(NSLayoutManager *layoutManager, NSTextStorage *textStorage, NSTextContainer *textContainer) {
     drawnString = textStorage.string;
@@ -87,11 +89,12 @@
                                                             maximumNumberOfLines:0
                                                                   exclusionPaths:nil
                                                                  constrainedSize:constrainedSize
-                                                            layoutManagerFactory:nil];
+                                                      layoutManagerCreationBlock:nil
+                                                           layoutManagerDelegate:nil
+                                                        textStorageCreationBlock:nil];
   ASTextKitTailTruncater *tailTruncater = [[ASTextKitTailTruncater alloc] initWithContext:context
                                                                truncationAttributedString:[self _simpleTruncationAttributedString]
-                                                                   avoidTailTruncationSet:[NSCharacterSet characterSetWithCharactersInString:@"."]
-                                                                          constrainedSize:constrainedSize];
+                                                                   avoidTailTruncationSet:[NSCharacterSet characterSetWithCharactersInString:@"."]];
   (void)tailTruncater;
   __block NSString *drawnString;
   [context performBlockWithLockedTextKitComponents:^(NSLayoutManager *layoutManager, NSTextStorage *textStorage, NSTextContainer *textContainer) {
@@ -111,11 +114,12 @@
                                                             maximumNumberOfLines:0
                                                                   exclusionPaths:nil
                                                                  constrainedSize:constrainedSize
-                                                            layoutManagerFactory:nil];
+                                                      layoutManagerCreationBlock:nil
+                                                           layoutManagerDelegate:nil
+                                                        textStorageCreationBlock:nil];
   ASTextKitTailTruncater *tailTruncater = [[ASTextKitTailTruncater alloc] initWithContext:context
                                                                truncationAttributedString:[self _simpleTruncationAttributedString]
-                                                                   avoidTailTruncationSet:[NSCharacterSet characterSetWithCharactersInString:@"."]
-                                                                          constrainedSize:constrainedSize];
+                                                                   avoidTailTruncationSet:[NSCharacterSet characterSetWithCharactersInString:@"."]];
   // So Xcode doesn't yell at me for an unused var...
   (void)tailTruncater;
   __block NSString *drawnString;
@@ -136,11 +140,13 @@
                                                             maximumNumberOfLines:0
                                                                   exclusionPaths:nil
                                                                  constrainedSize:constrainedSize
-                                                            layoutManagerFactory:nil];
+                                                      layoutManagerCreationBlock:nil
+                                                           layoutManagerDelegate:nil
+                                                        textStorageCreationBlock:nil];
+
   XCTAssertNoThrow([[ASTextKitTailTruncater alloc] initWithContext:context
                                         truncationAttributedString:[self _simpleTruncationAttributedString]
-                                            avoidTailTruncationSet:[NSCharacterSet characterSetWithCharactersInString:@"."]
-                                                   constrainedSize:constrainedSize]);
+                                            avoidTailTruncationSet:[NSCharacterSet characterSetWithCharactersInString:@"."]]);
 }
 
 @end

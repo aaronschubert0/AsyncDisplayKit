@@ -201,6 +201,12 @@
   self.layer.contentsGravity = (contentMode != UIViewContentModeRedraw) ? ASDisplayNodeCAContentsGravityFromUIContentMode(contentMode) : kCAGravityResize;
 }
 
+- (void)setBounds:(CGRect)bounds
+{
+  [super setBounds:bounds];
+  _node.threadSafeBounds = bounds;
+}
+
 #pragma mark - Event Handling + UIResponder Overrides
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -331,4 +337,36 @@
   return _node;
 }
 
+#if TARGET_OS_TV
+#pragma mark - tvOS
+- (BOOL)canBecomeFocused
+{
+  return [_node canBecomeFocused];
+}
+
+- (void)didUpdateFocusInContext:(UIFocusUpdateContext *)context withAnimationCoordinator:(UIFocusAnimationCoordinator *)coordinator
+{
+  return [_node didUpdateFocusInContext:context withAnimationCoordinator:coordinator];
+}
+
+- (void)setNeedsFocusUpdate
+{
+  return [_node setNeedsFocusUpdate];
+}
+
+- (void)updateFocusIfNeeded
+{
+  return [_node updateFocusIfNeeded];
+}
+
+- (BOOL)shouldUpdateFocusInContext:(UIFocusUpdateContext *)context
+{
+  return [_node shouldUpdateFocusInContext:context];
+}
+
+- (UIView *)preferredFocusedView
+{
+  return [_node preferredFocusedView];
+}
+#endif
 @end
