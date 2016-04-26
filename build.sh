@@ -25,6 +25,7 @@ if [ "$MODE" = "tests" ]; then
         -scheme AsyncDisplayKit \
         -sdk "$SDK" \
         -destination "$PLATFORM" \
+        -GCC_GENERATE_TEST_COVERAGE_FILES=YES GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES \
         build test
     trap - EXIT
     exit 0
