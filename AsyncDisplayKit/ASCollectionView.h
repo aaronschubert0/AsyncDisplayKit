@@ -65,6 +65,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id<ASCollectionViewLayoutInspecting> layoutInspector;
 
 /**
+ * YES to automatically invert the table view 180 degress. This causes the effect that chat apps often desire
+ *
+ * default is NO.
+ */
+@property (nonatomic) BOOL inverted;
+
+/**
  * Retrieves the node for the item at the given index path.
  *
  * @param indexPath The index path of the requested node.

@@ -146,6 +146,11 @@ extern NSString * const ASCollectionInvalidUpdateException;
  */
 @property (nonatomic, readonly) BOOL initialReloadDataHasBeenCalled;
 
+/**
+ * Set if you want your nodes to be inverted or not
+ */
+@property (nonatomic) BOOL inverted;
+
 #if ASEVENTLOG_ENABLE
 /*
  * @abstract The primitive event tracing object. You shouldn't directly use it to log event. Use the ASDataControllerLogEvent macro instead.

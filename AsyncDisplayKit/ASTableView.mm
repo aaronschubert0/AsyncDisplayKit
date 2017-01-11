@@ -313,6 +313,16 @@ static NSString * const kCellReuseIdentifier = @"_ASTableViewCell";
   ASPerformBackgroundDeallocation(_rangeController);
 }
 
+- (void)setInverted:(BOOL)inverted
+{
+  self.dataController.inverted = inverted;
+  if (inverted) {
+    self.transform = CGAffineTransformRotate(self.transform, M_PI);
+  } else {
+    self.transform = CGAffineTransformIdentity;
+  }
+}
+
 #pragma mark -
 #pragma mark Overrides
 

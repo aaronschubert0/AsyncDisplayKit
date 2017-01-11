@@ -53,6 +53,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL automaticallyAdjustsContentOffset;
 
 /**
+ * YES to automatically invert the table view 180 degress. This causes the effect that chat apps often desire
+ *
+ * default is NO.
+ */
+@property (nonatomic) BOOL inverted;
+
+/**
  * The number of screens left to scroll before the delegate -tableView:beginBatchFetchingWithContext: is called.
  *
  * Defaults to two screenfuls.
